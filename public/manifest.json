@@ -1,0 +1,23 @@
+{
+  "name": "PULSE Gym PR Tracker",
+  "short_name": "PULSE",
+  "description": "Minimalistic Gym Personal Record Tracker optimized for mobile, with an integrated AI Progression Coach.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#090d16",
+  "theme_color": "#090d16",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
