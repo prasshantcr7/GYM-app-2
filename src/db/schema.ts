@@ -106,3 +106,15 @@ export const cardioLogs = sqliteTable('cardio_logs', {
     .$defaultFn(() => new Date()),
 });
 
+// Weight logging table (linked to individual user sessions)
+export const weightLogs = sqliteTable('weight_logs', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  userId: text('user_id')
+    .notNull()
+    .references(() => user.id, { onDelete: 'cascade' }),
+  weight: real('weight').notNull(), // body weight in kg
+  loggedAt: integer('logged_at', { mode: 'timestamp' })
+    .notNull()
+    .$defaultFn(() => new Date()),
+});
+
