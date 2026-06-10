@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from '@/db';
-import { exercises, prLogs, settings } from '@/db/schema';
+import { exercises, prLogs, settings, cardioLogs } from '@/db/schema';
 import { and, eq, desc } from 'drizzle-orm';
 import { revalidatePath } from 'next/cache';
 import { auth } from '@/lib/auth';
@@ -12,6 +12,15 @@ export interface Exercise {
   name: string;
   muscleGroup: string;
   description: string | null;
+}
+
+export interface CardioLog {
+  id: number;
+  userId: string;
+  type: string;
+  duration: number;
+  calories: number;
+  loggedAt: Date;
 }
 
 export interface PRLog {
@@ -361,4 +370,44 @@ Write a highly personalized, motivating, and professional coach tip (1-2 sentenc
     reason,
     isNewWeight,
   };
+}
+
+// 10. Log a cardio session (scoped to user)
+export async function logCardioSession(type: string, duration: number, calories: number): Promise<{ success: boolean }> {
+  try {
+    const userSession = await getCurrentUser();
+    if (!userSession) return { success: false };
+
+    await db.insert(cardioLogs).values({
+      userId: userSession.id,
+      type: type.toLowerCase(),
+      duration,
+      calories,
+    });
+
+    revalidatePath('/');
+    return { success: true };
+  } catch (error) {
+    console.error('Error logging cardio session:', error);
+    return { success: false };
+  }
+}
+
+// 11. Get recent cardio logs (scoped to user)
+export async function getRecentCardioLogs(limit = 10): Promise<CardioLog[]> {
+  try {
+    const userSession = await getCurrentUser();
+    if (!userSession) return [];
+
+    const result = await db
+      .select()
+      .from(cardioLogs)
+      .where(eq(cardioLogs.userId, userSession.id))
+      .orderBy(desc(cardioLogs.loggedAt))
+      .limit(limit);
+    return result as CardioLog[];
+  } catch (error) {
+    console.error('Error fetching recent cardio logs:', error);
+    return [];
+  }
 }

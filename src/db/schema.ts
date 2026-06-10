@@ -91,3 +91,18 @@ export const settings = sqliteTable('settings', {
 }, (table) => [
   primaryKey({ columns: [table.userId, table.key] })
 ]);
+
+// Cardio logging table (linked to individual user sessions)
+export const cardioLogs = sqliteTable('cardio_logs', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  userId: text('user_id')
+    .notNull()
+    .references(() => user.id, { onDelete: 'cascade' }),
+  type: text('type').notNull(), // cycle, treadmill, elliptical
+  duration: integer('duration').notNull(), // in minutes
+  calories: integer('calories').notNull(), // in kcal
+  loggedAt: integer('logged_at', { mode: 'timestamp' })
+    .notNull()
+    .$defaultFn(() => new Date()),
+});
+

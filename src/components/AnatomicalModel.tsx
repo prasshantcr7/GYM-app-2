@@ -65,15 +65,15 @@ export default function AnatomicalModel({ activeGroup }: AnatomicalModelProps) {
             <path d="M63 32 L51 32 L51 46 L63 42 Z" style={getMuscleStyle(['chest'])} />
 
             {/* Core / Abs */}
-            <path d="M42 48 L58 48 L56 70 L44 70 Z" style={getNeutralStyle()} />
+            <path d="M42 48 L58 48 L56 70 L44 70 Z" style={getMuscleStyle(['core'])} />
 
             {/* Biceps (Front) */}
             <path d="M26 36 C24 39 23 44 25 48 L29 44 L29 36 Z" style={getMuscleStyle(['biceps'])} />
             <path d="M74 36 C76 39 77 44 75 48 L71 44 L71 36 Z" style={getMuscleStyle(['biceps'])} />
 
             {/* Forearms */}
-            <path d="M25 49 L20 64 L24 64 L28 49 Z" style={getNeutralStyle()} />
-            <path d="M75 49 L80 64 L76 64 L72 49 Z" style={getNeutralStyle()} />
+            <path d="M25 49 L20 64 L24 64 L28 49 Z" style={getMuscleStyle(['forearms'])} />
+            <path d="M75 49 L80 64 L76 64 L72 49 Z" style={getMuscleStyle(['forearms'])} />
 
             {/* Hands */}
             <circle cx="19" cy="67" r="2.5" style={getNeutralStyle()} />
@@ -88,8 +88,8 @@ export default function AnatomicalModel({ activeGroup }: AnatomicalModelProps) {
             <circle cx="58.5" cy="112" r="3" style={getNeutralStyle()} />
 
             {/* Calves / Shin (Front) */}
-            <path d="M37 116 L45 116 L43 140 L39 140 Z" style={getNeutralStyle()} />
-            <path d="M63 116 L55 116 L57 140 L61 140 Z" style={getNeutralStyle()} />
+            <path d="M37 116 L45 116 L43 140 L39 140 Z" style={getMuscleStyle(['calves'])} />
+            <path d="M63 116 L55 116 L57 140 L61 140 Z" style={getMuscleStyle(['calves'])} />
           </svg>
         </div>
 
@@ -120,8 +120,8 @@ export default function AnatomicalModel({ activeGroup }: AnatomicalModelProps) {
             <path d="M71 36 L71 46 L75 43 C76 40 75 36 71 36 Z" style={getMuscleStyle(['triceps'])} />
 
             {/* Forearms */}
-            <path d="M25 49 L20 64 L24 64 L28 49 Z" style={getNeutralStyle()} />
-            <path d="M75 49 L80 64 L76 64 L72 49 Z" style={getNeutralStyle()} />
+            <path d="M25 49 L20 64 L24 64 L28 49 Z" style={getMuscleStyle(['forearms'])} />
+            <path d="M75 49 L80 64 L76 64 L72 49 Z" style={getMuscleStyle(['forearms'])} />
 
             {/* Hands */}
             <circle cx="19" cy="67" r="2.5" style={getNeutralStyle()} />
@@ -139,8 +139,8 @@ export default function AnatomicalModel({ activeGroup }: AnatomicalModelProps) {
             <circle cx="58.5" cy="112" r="3" style={getNeutralStyle()} />
 
             {/* Calves (Back) */}
-            <path d="M36 116 L46 116 L44 140 L38 140 Z" style={getMuscleStyle(['legs'])} />
-            <path d="M64 116 L54 116 L56 140 L62 140 Z" style={getMuscleStyle(['legs'])} />
+            <path d="M36 116 L46 116 L44 140 L38 140 Z" style={getMuscleStyle(['calves'])} />
+            <path d="M64 116 L54 116 L56 140 L62 140 Z" style={getMuscleStyle(['calves'])} />
           </svg>
         </div>
       </div>
