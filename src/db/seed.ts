@@ -1,5 +1,5 @@
 import { db } from './index';
-import { exercises, settings } from './schema';
+import { exercises } from './schema';
 
 const INITIAL_EXERCISES = [
   // Legs

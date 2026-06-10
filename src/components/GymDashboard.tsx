@@ -26,7 +26,7 @@ export default function GymDashboard({ initialExercises, initialGoal }: GymDashb
   const [goal, setGoal] = useState<string>(initialGoal);
   const [selectedMuscle, setSelectedMuscle] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [isPending, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
 
   const handleSignOut = async () => {
     await authClient.signOut();

@@ -70,7 +70,7 @@ export default function LoginPage() {
         // Redirect to homepage on success
         router.push('/');
         router.refresh();
-      } catch (err: any) {
+      } catch (err) {
         console.error("Auth action failed:", err);
         setErrorMsg("An unexpected error occurred. Please try again.");
       }
